@@ -200,7 +200,7 @@ export const themeSetting = (mode) => {
 export const ColorModeContext = createContext({
     toggleColorMode:()=>{}
 });
-// 
+// custom hook return [theme , colorMode]
 export const useMode = ()=>{
  const [mode,setMode]=useState('dark');
  const colorMode = useMemo(
@@ -210,7 +210,9 @@ export const useMode = ()=>{
     }),
     []
 );
-const theme = useMemo(()=> createTheme(themeSetting(mode)),[mode])
+// create custom theme via createTheme
+const theme = useMemo(()=> createTheme(themeSetting(mode)),[mode]);
+
 return [theme , colorMode];
 
 }
